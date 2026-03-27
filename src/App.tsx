@@ -638,7 +638,8 @@ export default function App() {
               className="flex gap-2 sm:gap-3 p-1.5 sm:p-2 rounded-2xl border border-white/10"
               style={{ 
                 backgroundColor: `${uiTheme.hex}${Math.round(uiTheme.opacity * 255).toString(16).padStart(2, '0')}`,
-                backdropFilter: `blur(${uiTheme.opacity * 40}px)`
+                backdropFilter: `blur(${uiTheme.opacity * 40}px)`,
+                color: uiTheme.textHex || '#ffffff'
               }}
             >
               <button 
@@ -669,7 +670,8 @@ export default function App() {
               className="flex gap-2 sm:gap-3 p-1.5 sm:p-2 rounded-2xl border border-white/10"
               style={{ 
                 backgroundColor: `${uiTheme.hex}${Math.round(uiTheme.opacity * 255).toString(16).padStart(2, '0')}`,
-                backdropFilter: `blur(${uiTheme.opacity * 40}px)`
+                backdropFilter: `blur(${uiTheme.opacity * 40}px)`,
+                color: uiTheme.textHex || '#ffffff'
               }}
             >
               <button 
@@ -717,9 +719,9 @@ export default function App() {
                     key={p}
                     onClick={() => switchPhase(p)}
                     className={`px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all ${
-                      phase === p ? 'text-white shadow-lg' : 'text-slate-400 hover:text-white hover:bg-white/5'
+                      phase === p ? 'shadow-lg' : 'text-slate-400 hover:text-white hover:bg-white/5'
                     }`}
-                    style={phase === p ? { backgroundColor: uiTheme.hex } : {}}
+                    style={phase === p ? { backgroundColor: uiTheme.hex, color: uiTheme.textHex || '#ffffff' } : {}}
                   >
                     {p === 'focus' ? 'Focus' : p === 'shortBreak' ? 'Short Break' : 'Long Break'}
                   </button>
@@ -762,8 +764,8 @@ export default function App() {
                 
                 <button 
                   onClick={toggleTimer}
-                  className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-full text-white shadow-xl transition-all hover:scale-105 active:scale-95"
-                  style={{ backgroundColor: uiTheme.hex, boxShadow: `0 10px 25px -5px ${uiTheme.hex}80` }}
+                  className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-full shadow-xl transition-all hover:scale-105 active:scale-95"
+                  style={{ backgroundColor: uiTheme.hex, color: uiTheme.textHex || '#ffffff', boxShadow: `0 10px 25px -5px ${uiTheme.hex}80` }}
                 >
                   {isActive ? <Pause size={28} className="sm:w-8 sm:h-8" fill="currentColor" /> : <Play size={28} className="sm:w-8 sm:h-8 ml-1" fill="currentColor" />}
                 </button>
@@ -786,13 +788,14 @@ export default function App() {
               }`}
               style={{ 
                 backgroundColor: `${uiTheme.hex}${Math.round(uiTheme.opacity * 255).toString(16).padStart(2, '0')}`,
-                backdropFilter: `blur(${uiTheme.opacity * 40}px)`
+                backdropFilter: `blur(${uiTheme.opacity * 40}px)`,
+                color: uiTheme.textHex || '#ffffff'
               }}
             >
               <button onClick={prevVideo} className="p-1.5 sm:p-2 hover:bg-white/20 rounded-full transition-colors">
                 <ChevronLeft size={18} className="sm:w-5 sm:h-5" />
               </button>
-              <span className="text-xs sm:text-sm font-medium tracking-widest uppercase text-slate-300 whitespace-nowrap">
+              <span className="text-xs sm:text-sm font-medium tracking-widest uppercase whitespace-nowrap opacity-80">
                 Scene {currentVideoIndex + 1} / {currentVideoList.length}
               </span>
               <button onClick={nextVideo} className="p-1.5 sm:p-2 hover:bg-white/20 rounded-full transition-colors">
